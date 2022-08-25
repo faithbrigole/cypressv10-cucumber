@@ -1,6 +1,6 @@
 # studio_subsit
 
-If you clone the repo just to **npm install**
+If you clone the repo just do **npm install**
 
 
 
