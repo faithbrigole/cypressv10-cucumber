@@ -16,7 +16,10 @@ Then(`user should see {string}`, (msg: string) => {
 
 // Scenario Outline: User inputs email that shows the status prompt
 Then(`user should see status {string}`, (status: string) => {
-  cy.get(`div[role='status'] > div > span`).should(`contain.text`, status);
+  cy.get(`div[role='status'] > div > span`, { timeout: 10000 }).should(
+    `contain.text`,
+    status
+  );
 });
 
 // Scenario: User click resend code
@@ -40,4 +43,16 @@ Then(`user should redirect back to login page`, () => {
 
 Then(`email field is shown`, () => {
   cy.get(`input[name='email']`).should("be.visible");
+});
+
+// Scenario: User inputs invalid otp code
+When(`user inputs invalid code`, () => {
+  const otp = "123456";
+  cy.get(`input[name='email']`).type("sqa.hov@gmail.com");
+  cy.get(`button[type='submit']`).click();
+
+  cy.contains(`h2`, "Sign In to your Account").should("be.visible");
+  cy.get(`.chakra-form-control div input`).each(($element, index) => {
+    cy.wrap($element).type(otp.toString()[index]);
+  });
 });

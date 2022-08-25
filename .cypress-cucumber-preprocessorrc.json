@@ -1,12 +1,9 @@
 {
   "json": {
-    "enabled": true,
-    "output": "jsonlogs/log.json",
-    "formatter": "cucumber-json-formatter.exe"
+    "enabled": true
   },
   "messages": {
-    "enabled": true,
-    "output": "jsonlogs/messages.ndjson"
+    "enabled": true
   },
   "html": {
     "enabled": true

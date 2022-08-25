@@ -29,3 +29,7 @@ Feature: Subsit Login
     And click "Change email address"
     Then user should redirect back to login page
     And email field is shown
+
+  Scenario: User inputs invalid otp code
+    When user inputs invalid code
+    Then user should see "OTP is invalid." status
