@@ -11,16 +11,13 @@ When(`user inputs {string}`, (email: string) => {
 });
 
 Then(`user should see {string}`, (msg: string) => {
-  cy.get(`div.chakra-form__error-message`).should(`contain.text`, msg);
-});
-
-// Scenario Outline: User inputs email that shows the status prompt
-Then(`user should see status {string}`, (status: string) => {
-  cy.get(`div[role='status'] > div > span`, { timeout: 10000 }).should(
+  cy.get(`div.chakra-form__error-message`, { timeout: 30000 }).should(
     `contain.text`,
-    status
+    msg
   );
 });
+
+// Scenario Outline: User inputs email that shows the status prompt- already on signup process
 
 // Scenario: User click resend code
 When(`user inputs registered email`, () => {
@@ -56,3 +53,5 @@ When(`user inputs invalid code`, () => {
     cy.wrap($element).type(otp.toString()[index]);
   });
 });
+
+// Scenario: When user clicks create an account button - already on signup process

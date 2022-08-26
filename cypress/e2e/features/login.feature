@@ -33,3 +33,7 @@ Feature: Subsit Login
   Scenario: User inputs invalid otp code
     When user inputs invalid code
     Then user should see "OTP is invalid." status
+
+  Scenario: When user clicks create an account button
+    When user clicks "Create an account"
+    Then user should be redirected to "Create an Account" page
